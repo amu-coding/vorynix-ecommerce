@@ -4,6 +4,7 @@
     --text: #333;
     --icon-text: #676767;
     --secondary-icon: #c2c2c2;
+    --white: #fff;
 }
 
 * {
@@ -40,6 +41,46 @@
     text-decoration: none;
 }
 
-.nav-icon {
+.nav-icons {
     margin-right: 0.5rem;
+}
+
+.header-right-section {
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.head-icons {
+    color: var(--icon-text);
+    transition: 0.3s ease;
+}
+
+#head-addcart-icon {
+    border: 1px solid var(--icon-text);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.head-icons:hover {
+    color: var(--secondary-color);
+}
+
+#signin-btn {
+    background-color: var(--secondary-color);
+    padding: 10px 25px;
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    border: 1px solid var(--secondary-color);
+}
+
+#head-signin-icon {
+    margin-right: 0.5rem;
+}
+
+#signin-btn:hover {
+    background-color: var(--white);
+    border: 1px solid var(--icon-text);
+    color: var(--icon-text);
 }
