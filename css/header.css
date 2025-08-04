@@ -1,0 +1,45 @@
+:root {
+    --primary-color: #374655;
+    --secondary-color: #FF8A00;
+    --text: #333;
+    --icon-text: #676767;
+    --secondary-icon: #c2c2c2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex {
+    display: flex;
+}
+
+.header-section {
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.header-left-section {
+    gap: 2rem;
+    align-items: center;
+}
+
+#site-logo {
+    width: 120px;
+    height: auto;
+}
+
+.navbar {
+    gap: 2rem;
+}
+
+.nav-item {
+    color: var(--icon-text);
+    text-decoration: none;
+}
+
+.nav-icon {
+    margin-right: 0.5rem;
+}
