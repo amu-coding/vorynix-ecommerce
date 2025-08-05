@@ -80,9 +80,61 @@ body {
 .product-description-box h2 {
     color: var(--text);
     font-size: 1.2rem;
+    font-weight: 500;
 }
 
 .product-description-box p {
     color: var(--icon-text);
     font-size: 1rem;
+}
+
+.hero-banner-section {
+    flex-direction: column;
+}
+
+.hero-banner-box {
+    width: 90%;
+    padding: 10px 0px;
+    position: relative;
+}
+
+#hero-banner {
+    width: 100%;
+}
+
+.overlay-box {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    transform: translateY(-50%);
+    color: var(--white);
+    padding: 20px 100px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.overlay-box > h2 {
+    font-size: 2rem;
+}
+
+.overlay-box > p {
+    color: var(--secondary-icon);
+}
+
+.overlay-box a {
+    text-decoration: none;
+    color: var(--icon-text);
+    padding: 5px 5px;
+    padding-left: 15px;
+    background-color: var(--label);
+    border-radius: 50px;
+}
+
+.overlay-box a i {
+    margin-left: 1rem;
+    padding: 6px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border-radius: 50px;
 }
