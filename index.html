@@ -5,10 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vorynix | E-Commerce Website</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/header.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <!-- Header Section -->
+     <section class="header-section flex">
+        <div class="header-left-section flex">
+            <div class="site-logo-box flex">
+                <a href="../index.html">
+                    <img src="./uploads/vorynix original logo.png" alt="site logo" id="site-logo">
+                </a>
+            </div>
+            <div class="navbar flex">
+                <a href="#" class="nav-items"><i class="fas fa-list nav-icons"></i> Categories</a>
+                <a href="#" class="nav-items"><i class="fas fa-fire nav-icons"></i> Top Selling</a>
+                <a href="#" class="nav-items"><i class="fas fa-tags nav-icons"></i> Discounts</a>
+                <a href="#" class="nav-items"><i class="fas fa-file-alt nav-icons"></i> Pages</a>
+                <a href="#" class="nav-items"><i class="fas fa-envelope nav-icons"></i> Contact</a>
+            </div>
+        </div>
+        <div class="header-right-section flex">
+            <i class="fas fa-search head-icons" id="head-search-icon"></i>
+            <i class="fas fa-shopping-cart head-icons" id="head-addcart-icon"></i>
+            <button id="signin-btn"><i class="fas fa-user" id="head-signin-icon"></i> Sign In / Register</button>
+        </div>
+    </section>
+
+    <!-- Home Page -->
     <section class="hero-product-label container">
         <div class="hero-products-grid">
             <a href="#" class="clickable-product flex">
