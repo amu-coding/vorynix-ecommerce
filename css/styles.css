@@ -90,39 +90,45 @@ body {
 
 .hero-banner-section {
     flex-direction: column;
+    margin: 50px 0px;
 }
 
-.hero-banner-box {
+.hero-banner-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
     width: 90%;
-    padding: 10px 0px;
-    position: relative;
+    background-color: #034654;
+    border-radius: 30px;
+    max-height: 400px;
 }
 
-#hero-banner {
-    width: 100%;
-}
-
-.overlay-box {
-    position: absolute;
-    top: 60%;
-    left: 0;
-    transform: translateY(-50%);
-    color: var(--white);
-    padding: 20px 100px;
-    flex-direction: column;
+.hero-content-box {
     justify-content: center;
+    flex-direction: column;
+    padding-left: 100px;
     gap: 1rem;
 }
 
-.overlay-box > h2 {
-    font-size: 2rem;
+.hero-img-box {
+    justify-content: center;
 }
 
-.overlay-box > p {
+.hero-img-box img {
+    width: 65%;
+    margin-top: -60px;
+}
+
+.hero-content-box > h2 {
+    font-size: 2rem;
+    color: var(--white);
+}
+
+.hero-content-box > p {
     color: var(--secondary-icon);
 }
 
-.overlay-box a {
+.hero-content-box a {
     text-decoration: none;
     color: var(--icon-text);
     padding: 5px 5px;
@@ -131,10 +137,18 @@ body {
     border-radius: 50px;
 }
 
-.overlay-box a i {
+.hero-content-box a i {
     margin-left: 1rem;
     padding: 6px;
     background-color: var(--secondary-color);
     color: var(--white);
     border-radius: 50px;
+}
+
+.hero-content-box div a {
+    transition: 0.3s ease;
+}
+
+.hero-content-box div a:hover {
+    transform: translateY(-3px);
 }
