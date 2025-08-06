@@ -172,6 +172,11 @@ body {
     flex-direction: column;
     gap: 1rem;
     text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.carousel-item:hover {
+    background-color: var(--secondary-color);
 }
 
 .carousel-item i {
@@ -179,8 +184,16 @@ body {
     font-size: 3rem;
 }
 
+.carousel-item:hover i {
+    color: var(--white);
+}
+
 .carousel-item h2 {
     color: var(--icon-text);
     font-size: 1rem;
     font-weight: 500;
+}
+
+.carousel-item:hover h2 {
+    color: var(--white);
 }
