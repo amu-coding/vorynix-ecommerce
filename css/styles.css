@@ -64,13 +64,19 @@ body {
 
 .product-img-box {
     border: 1px solid var(--secondary-color);
-    border-radius: 50px;
+    border-radius: 50%;
     padding: 5px;
+    overflow: hidden;
+    height: 80px;
+    width: 80px;
+    flex-shrink: 0;
 }
 
 .product-img {
-    width: 3rem;
-    border-radius: 50px;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .product-description-box {

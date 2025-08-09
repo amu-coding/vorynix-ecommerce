@@ -9,8 +9,8 @@ const products = [
   createProduct("P03", "electronics", "Monitor", "Dell UltraSharp U2723QE", "27-inch 4K monitor with USB-C and color accuracy.", 650, "https://images.unsplash.com/photo-1517331156700-3c241d2b4d83?crop=entropy&cs=tinysrgb&fit=crop&h=600&w=600"),
 
   // 🏋️ Sport
-  createProduct("P04", "sport", "Treadmill", "ProForm Carbon T7", "Foldable treadmill with incline and screen.", 900, "https://images.unsplash.com/photo-1590080877777-7b8b1313a703?crop=entropy&cs=tinysrgb&fit=crop&h=600&w=600"),
-  createProduct("P05", "sport", "Yoga Mat", "Lululemon Reversible Mat", "Durable and grippy yoga mat for all levels.", 78, "https://images.unsplash.com/photo-1552058544-f2b08422138a?crop=entropy&cs=tinysrgb&fit=crop&h=600&w=600"),
+  createProduct("P04", "sport", "Treadmill", "ProForm Carbon T7", "Foldable treadmill with incline and screen.", 900, "https://www.3gcardio.com/shop/elite-runner-x-treadmill"),
+  createProduct("P05", "sport", "Yoga Mat", "Lululemon Reversible Mat", "Durable and grippy yoga mat for all levels.", 78, "https://images.unsplash.com/photo-1590080877777-7b8b1313a703?crop=entropy&cs=tinysrgb&fit=crop&h=600&w=600https://www.everydayyoga.com/products/everyday-yoga-square-yoga-mat-6-x-6-5mm-8161943"),
   createProduct("P06", "sport", "Dumbbells", "Bowflex SelectTech 552", "Adjustable dumbbells from 5 to 52.5 lbs.", 429, "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?crop=entropy&cs=tinysrgb&fit=crop&h=600&w=600"),
 
   // 🪑 Furniture
@@ -33,3 +33,25 @@ const products = [
   createProduct("P17", "smartphone", "Phone", "Samsung Galaxy S25 Ultra", "Flagship Android with quad camera system.", 1199, "https://images.unsplash.com/photo-1512499617640-c2f999fa70ee?crop=entropy&cs=tinysrgb&fit=crop&h=600&w=600"),
   createProduct("P18", "smartphone", "Phone", "Google Pixel 9", "Pixel phone with AI features and clean Android.", 899, "https://images.unsplash.com/photo-1510557880182-3c5f9f30114c?crop=entropy&cs=tinysrgb&fit=crop&h=600&w=600")
 ];
+
+// Get container
+const heroProductsContainer = document.getElementById("hero-products-container");
+
+// Select which products to display (first 5 here)
+const heroProducts = products.slice(0, 5);
+
+// Add products dynamically
+heroProducts.forEach(product => {
+    const productHTML = `
+        <a href="#" class="clickable-product flex">
+            <div class="product-img-box flex">
+                <img src="${product.imageUrl}" alt="${product.name} image" class="product-img">
+            </div>
+            <div class="product-description-box flex">
+                <h2>${product.name}</h2>
+                <p>${product.model}</p>
+            </div>
+        </a>
+    `;
+    heroProductsContainer.insertAdjacentHTML("beforeend", productHTML);
+});
