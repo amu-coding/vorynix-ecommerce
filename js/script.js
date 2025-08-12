@@ -37,7 +37,7 @@ const products = [
 // Get container
 const heroProductsContainer = document.getElementById("hero-products-container");
 
-// Select which products to display (first 4 here)
+// Select which products to display (first 5 here)
 const heroProducts = products.slice(0, 4);
 
 // Add products dynamically

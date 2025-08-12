@@ -203,3 +203,14 @@ body {
 .carousel-item:hover h2 {
     color: var(--white);
 }
+
+.discount-section {
+    gap: 1rem;
+}
+
+.discount-box {
+    flex-direction: column;
+    width: 300px;
+    gap: 1rem;
+    padding: 20px;
+}
