@@ -55,3 +55,75 @@ heroProducts.forEach(product => {
     `;
     heroProductsContainer.insertAdjacentHTML("beforeend", productHTML);
 });
+
+// Function to get products by category
+function getProductsByCategory(category) {
+    return products.filter(product => product.category === category);
+}
+
+// Function to get a random product from a category
+function getRandomProductFromCategory(category) {
+    const categoryProducts = getProductsByCategory(category);
+    if (categoryProducts.length === 0) return null;
+    const randomIndex = Math.floor(Math.random() * categoryProducts.length);
+    return categoryProducts[randomIndex];
+}
+
+// Function to create discounted product HTML
+function createDiscountedProductHTML(product) {
+    return `
+        <div class="product-template container">
+            <img src="${product.imageUrl}" alt="${product.name} image">
+            <h2>${product.name}</h2>
+            <div class="cart-price flex">
+                <div class="cart-box container">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="price-box flex">
+                    <h2>${product.price}</h2>
+                    <p>$</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Populate discounted products section
+function populateDiscountedProducts() {
+    const discountedProductsContainer = document.querySelector('.discounted-products-grid');
+    
+    if (!discountedProductsContainer) return;
+    
+    // Clear existing content
+    discountedProductsContainer.innerHTML = '';
+    
+    // Select one product from each of three different categories
+    const selectedCategories = ['electronics', 'sport', 'furniture'];
+    const selectedProducts = [];
+    
+    selectedCategories.forEach(category => {
+        const product = getRandomProductFromCategory(category);
+        if (product) {
+            selectedProducts.push(product);
+        }
+    });
+    
+    // If we don't have enough products from selected categories, fill with random products
+    while (selectedProducts.length < 3) {
+        const randomProduct = products[Math.floor(Math.random() * products.length)];
+        if (!selectedProducts.find(p => p.id === randomProduct.id)) {
+            selectedProducts.push(randomProduct);
+        }
+    }
+    
+    // Add products to the container
+    selectedProducts.forEach(product => {
+        const productHTML = createDiscountedProductHTML(product);
+        discountedProductsContainer.insertAdjacentHTML("beforeend", productHTML);
+    });
+}
+
+// Initialize discounted products when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    populateDiscountedProducts();
+});
