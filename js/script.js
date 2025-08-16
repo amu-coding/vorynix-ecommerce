@@ -126,4 +126,44 @@ function populateDiscountedProducts() {
 // Initialize discounted products when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     populateDiscountedProducts();
+    startCountdownTimer();
 });
+
+// Countdown Timer Function
+function startCountdownTimer() {
+    // Set target date (24 hours from now)
+    const now = new Date();
+    const targetDate = new Date(now.getTime() + (24 * 60 * 60 * 1000)); // 24 hours from now
+    
+    function updateTimer() {
+        const currentDate = new Date();
+        const difference = targetDate - currentDate;
+        
+        if (difference <= 0) {
+            // Timer finished, reset to 24 hours
+            targetDate.setTime(targetDate.getTime() + (24 * 60 * 60 * 1000));
+            return;
+        }
+        
+        // Calculate time units
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        
+        // Update timer elements
+        const timerElements = document.querySelectorAll('.timer-parts');
+        if (timerElements.length >= 4) {
+            timerElements[0].textContent = days.toString().padStart(2, '0');
+            timerElements[1].textContent = hours.toString().padStart(2, '0');
+            timerElements[2].textContent = minutes.toString().padStart(2, '0');
+            timerElements[3].textContent = seconds.toString().padStart(2, '0');
+        }
+    }
+    
+    // Update timer immediately
+    updateTimer();
+    
+    // Update timer every second
+    setInterval(updateTimer, 1000);
+}

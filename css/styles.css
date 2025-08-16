@@ -324,3 +324,41 @@ body {
     font-size: 1rem;
     color: var(--text);
 }
+
+.newest-products-section {
+    padding: 50px 0px;
+}
+
+.newest-products-box {
+    width: 90%;
+}
+
+.title-bar {
+    width: 100%;
+    justify-content: space-between;
+}
+
+.newest-title {
+    padding-left: 10px;
+    border-left: 3px solid var(--secondary-color);
+
+}
+
+.newest-title h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.scroll-btn-box {
+    gap: 1rem;
+}
+
+.scroll-btn-box a {
+    text-decoration: none;
+    padding: 5px 15px;
+    background-color: var(--secondary-icon);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 400;
+}
