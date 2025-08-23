@@ -380,9 +380,10 @@ body {
     border: 2px solid var(--secondary-icon);
     border-radius: 10px;
     color: var(--secondary-icon);
+    transition: 0.3s ease;
 }
 
-.scroll-btn-box > i:focus {
+.scroll-btn-box > i:hover {
     color: var(--secondary-color);
     border-color: var(--secondary-color);
 }
