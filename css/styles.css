@@ -396,39 +396,31 @@ body {
 }
 
 .newest-products-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  position: relative;
-  width: max-content; /* Optional: prevents overflow if fixed card sizes */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    position: relative;
 }
 
 .product-card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 300px;
-  background-color: var(--white);
-  border-radius: 15px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  z-index: 0;
-  pointer-events: none; /* allows hover to pass through */
+    background-color: var(--white);
+    border-radius: 15px;
+    transition: 0.3s ease;
+    position: absolute;
 }
 
 .latest-products-card {
-  position: relative;
-  z-index: 1;
-  width: 300px;
-  height: 300px;
-  border-radius: 15px;
-  background-color: var(--label);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border-radius: 15px;
+    background-color: var(--white);
+    width: 300px;
+    height: 300px;
+    background-color: var(--label);
+    position: relative;
+    transition: 0.4s ease;
 }
 
-/* Make overlay respond to hover on the card */
 .latest-products-card:hover ~ .product-card-overlay {
-  background-color: var(--secondary-color);
-  transform: rotate(6deg);
+    background-color: var(--secondary-color);
+    transform: rotate(6deg);
 }
