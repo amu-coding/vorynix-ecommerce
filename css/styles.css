@@ -433,5 +433,5 @@ body {
 
 .product-card-wrapper:hover .product-card-overlay {
   background-color: var(--secondary-color);
-  transform: rotate(5deg);
+  transform: rotate(3deg);
 }
