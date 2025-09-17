@@ -127,6 +127,7 @@ function populateDiscountedProducts() {
 document.addEventListener('DOMContentLoaded', function() {
     populateDiscountedProducts();
     startCountdownTimer();
+    populateLatestProducts();
 });
 
 // Countdown Timer Function
@@ -166,4 +167,53 @@ function startCountdownTimer() {
     
     // Update timer every second
     setInterval(updateTimer, 1000);
+}
+
+// ========== Latest Products (Newest) ==========
+function toTitleCase(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function createLatestProductCardHTML(product) {
+  return `
+    <div class="product-card-wrapper">
+      <div class="product-card-overlay"></div>
+      <div class="latest-products-card">
+        <img src="${product.imageUrl}" alt="${product.name} image">
+        <div class="cat-label flex">
+          <h2>${toTitleCase(product.category)}</h2>
+        </div>
+        <div class="latest-hr container">
+          <hr>
+        </div>
+        <div class="latest-p-name container">
+          <h2>${product.name}</h2>
+        </div>
+        <div class="latest-pricing-box flex">
+          <div class="cart-box container">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
+          <div class="price-box flex">
+            <h2>${product.price}</h2>
+            <p>$</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function populateLatestProducts() {
+  const latestGrid = document.querySelector('.newest-products-grid');
+  if (!latestGrid) return;
+  
+  // Clear any static content
+  latestGrid.innerHTML = '';
+  
+  // Choose the last 4 products as "latest"; fallback to all if fewer
+  const latest = products.slice(-4);
+  
+  latest.forEach(product => {
+    latestGrid.insertAdjacentHTML('beforeend', createLatestProductCardHTML(product));
+  });
 }

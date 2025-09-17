@@ -404,8 +404,8 @@ body {
 
 .product-card-wrapper {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: auto;
 }
 
 .product-card-overlay {
@@ -414,9 +414,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--white);
+  background-color: transparent;
   border-radius: 15px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition: background-color 0.3s ease;
   z-index: 0;
   pointer-events: none;
 }
@@ -425,24 +425,51 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: 100%;
   border-radius: 15px;
-  background-color: var(--label);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background-color: var(--white);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.product-card-wrapper:hover .latest-products-card {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* Match discounted-products image styling */
+.latest-products-card > img {
+  width: 100%;
+  height: 200px;
+  border-radius: 15px 15px 0px 0px;
+  transition: 0.3s ease;
+  object-fit: cover;
+  object-position: center;
+}
+
+.latest-products-card:hover > img {
+  transform: scale(1.05);
 }
 
 .product-card-wrapper:hover .product-card-overlay {
-  background-color: var(--secondary-color);
-  transform: rotate(5deg);
+  background-color: rgba(0,0,0,0.02);
+}
+
+.cat-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
 }
 
 .cat-label h2 {
-    font-size: 0.8rem;
-    font-weight: 400;
-    padding: 5px 10px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 10px;
     background-color: var(--white);
-    border-bottom-right-radius: 15px;
-    border-top-left-radius: 15px;
+    border-radius: 999px;
     border: 1px solid var(--label);
 }
 
@@ -451,11 +478,15 @@ body {
     padding-top: 10px;
 }
 
+.latest-hr {
+    width: 100%;
+}
+
 .latest-hr hr {
-    font-size: 0.8rem;
-    width: 80%;
-    color: var(--secondary-icon);
-    text-align: center;
+    width: 90%;
+    border: none;
+    height: 1px;
+    background-color: var(--label);
 }
 
 .latest-p-name h2 {
@@ -465,6 +496,22 @@ body {
 
 .latest-pricing-box {
     justify-content: space-between;
+    align-items: center;
     width: 100%;
-    padding: 10px;
+    padding: 10px 12px 14px 12px;
+}
+
+.latest-p-name,
+.latest-hr,
+.latest-products-card .img {
+    padding: 0 12px;
+}
+
+.latest-p-name {
+    text-align: left;
+}
+
+.latest-products-card .img img {
+    width: 100%;
+    max-width: 100%;
 }
