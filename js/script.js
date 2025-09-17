@@ -123,13 +123,6 @@ function populateDiscountedProducts() {
     });
 }
 
-// Initialize discounted products when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    populateDiscountedProducts();
-    startCountdownTimer();
-    populateLatestProducts();
-});
-
 // Countdown Timer Function
 function startCountdownTimer() {
     // Set target date (24 hours from now)
@@ -217,3 +210,101 @@ function populateLatestProducts() {
     latestGrid.insertAdjacentHTML('beforeend', createLatestProductCardHTML(product));
   });
 }
+
+// ========== Top Sellers (LTR/English) ==========
+function getUniqueCategories() {
+  const set = new Set(products.map(p => p.category));
+  return Array.from(set);
+}
+
+function createTopCategoryButton(category, isActive) {
+  // Choose a simple left icon per category name
+  const leftIcon = 'fa-image';
+  const rightIcon = 'fa-wrench';
+  return `
+    <button class="top-category-btn${isActive ? ' active' : ''}" data-category="${category}">
+      <span class="label-area"><i class="fa ${leftIcon} icon-left"></i><span>${toTitleCase(category)}</span></span>
+      <i class="fa ${rightIcon} icon-right"></i>
+    </button>
+  `;
+}
+
+function createTopCard(product) {
+  // Derive mock values for demo (you can replace with real fields later)
+  const discountPercent = product.price > 500 ? 12 : 6;
+  const oldPrice = Math.round(product.price * (1 + discountPercent / 100));
+  const soldCount = Math.floor(10 + Math.random() * 40);
+  return `
+    <div class="top-card">
+      <div class="top-discount-badge">${discountPercent}%</div>
+      <img src="${product.imageUrl}" alt="${product.name} image">
+      <div class="content">
+        <h3>${product.name} ${product.model ? ('- ' + product.model) : ''}</h3>
+      </div>
+      <div class="top-meta">
+        <div class="meta price">$${product.price}</div>
+        <div class="meta old-price">$${oldPrice}</div>
+        <div class="meta">${soldCount}</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderTopCategories(selectedCategory) {
+  const sidebar = document.getElementById('top-categories');
+  if (!sidebar) return;
+  const categories = getUniqueCategories();
+  sidebar.innerHTML = categories
+    .map((c, i) => createTopCategoryButton(c, selectedCategory ? c === selectedCategory : i === 0))
+    .join('');
+}
+
+function renderTopProducts(category) {
+  const grid = document.getElementById('top-products-grid');
+  if (!grid) return;
+  const list = products.filter(p => p.category === category).slice(0, 3);
+  grid.innerHTML = list.map(createTopCard).join('');
+}
+
+function moveSidebarTailToActive() {
+  const sidebar = document.getElementById('top-categories');
+  if (!sidebar) return;
+  const active = sidebar.querySelector('.top-category-btn.active');
+  if (!active) return;
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const btnRect = active.getBoundingClientRect();
+  const offset = btnRect.top - sidebarRect.top + (btnRect.height - 24) / 2; // center 24px tail
+  sidebar.style.setProperty('--tail-top', offset + 'px');
+}
+
+function wireTopCategoryClicks() {
+  const sidebar = document.getElementById('top-categories');
+  if (!sidebar) return;
+  sidebar.addEventListener('click', e => {
+    const btn = e.target.closest('.top-category-btn');
+    if (!btn) return;
+    const category = btn.getAttribute('data-category');
+    sidebar.querySelectorAll('.top-category-btn').forEach(el => el.classList.remove('active'));
+    btn.classList.add('active');
+    renderTopProducts(category);
+    moveSidebarTailToActive();
+  });
+}
+
+function initTopSellers() {
+  const categories = getUniqueCategories();
+  if (categories.length === 0) return;
+  const initial = categories[0];
+  renderTopCategories(initial);
+  renderTopProducts(initial);
+  wireTopCategoryClicks();
+  moveSidebarTailToActive();
+}
+
+// Initialize discounted products when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  populateDiscountedProducts();
+  startCountdownTimer();
+  populateLatestProducts();
+  initTopSellers();
+});
