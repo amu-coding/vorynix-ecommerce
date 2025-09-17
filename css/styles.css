@@ -433,7 +433,7 @@ body {
 
 .product-card-wrapper:hover .product-card-overlay {
   background-color: var(--secondary-color);
-  transform: rotate(3deg);
+  transform: rotate(5deg);
 }
 
 .cat-label h2 {
@@ -444,4 +444,27 @@ body {
     border-bottom-right-radius: 15px;
     border-top-left-radius: 15px;
     border: 1px solid var(--label);
+}
+
+.latest-products-card .img img {
+    width: 40%;
+    padding-top: 10px;
+}
+
+.latest-hr hr {
+    font-size: 0.8rem;
+    width: 80%;
+    color: var(--secondary-icon);
+    text-align: center;
+}
+
+.latest-p-name h2 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.latest-pricing-box {
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
 }
